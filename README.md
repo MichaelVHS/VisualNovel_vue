@@ -1,4 +1,3 @@
 Перед началом прописать  
-npm create vite@latest project -- --template vue-ts  
-npm install vue-router  
+git clone https://github.com/MichaelVHS/VisualNovel_vue.git  
 npm i
