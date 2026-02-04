@@ -1,7 +1,6 @@
 <template>
   <div class="page">
-  <div class="main_img">
-  </div>
+    <img src="/characters.png" alt="characters" class="characterImg" draggable="false">
   <SideBar/>
   </div>
 </template>
@@ -15,11 +14,11 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background: url(/fon.jpg) no-repeat;
+  background-size: cover;
 }
-.main_img{
-  height: 100vh;
-  width: 80%;
-  background-color: #bdbdbd;
+.characterImg{
+  margin-left: 150px;
 }
 </style>
 <script setup lang="ts">
