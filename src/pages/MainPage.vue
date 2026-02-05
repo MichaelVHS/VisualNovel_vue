@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <img src="/characters.png" alt="characters" class="characterImg" draggable="false">
+    <img src="/characters.png" alt="characters" class="characterImg noDragable" draggable="false">
   <SideBar/>
   </div>
 </template>
@@ -16,6 +16,9 @@
   bottom: 0;
   background: url(/fon.jpg) no-repeat;
   background-size: cover;
+}
+.noDragable{
+  -webkit-user-select: none;
 }
 .characterImg{
   margin-left: 150px;
