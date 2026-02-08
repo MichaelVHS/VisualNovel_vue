@@ -1,27 +1,25 @@
 <template>
   <div class="page">
-    <img src="/characters.png" alt="characters" class="characterImg noDragable" draggable="false">
+    <img src="/characters.png" alt="characters" class="characterImg" draggable="false">
   <SideBar/>
   </div>
 </template>
 
 <style scoped>
 .page{
-  margin: 0;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 100%;
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(/fon.jpg) no-repeat;
-  background-size: cover;
-}
-.noDragable{
-  -webkit-user-select: none;
+  background-size: cover !important;
+  background: url(/background.jpg) no-repeat 0 0;
 }
 .characterImg{
-  margin-left: 150px;
+  position: absolute;
+  left: 8%;
+  bottom: 0;
+  width: 48%;
 }
 </style>
 <script setup lang="ts">

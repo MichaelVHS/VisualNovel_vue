@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    font-family: Gabriola, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+}
+:root{
+    --text-color: #abb6e4;
+    --hover-color: white;
+    --stroke-color: #0f1537;
+    --bg-color-left: #090915;
+    --bg-color-right: #0e101b;
+
+}
+html{
+    width: 100%;
+    height: 100%;
+    font-size: 10vw;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.app{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Поставить цвет */
+    background-image: linear-gradient(to left, var(--bg-color-left) 0%, var(--bg-color-left) 50%, var(--bg-color-right) 50%,  var(--bg-color-right) 100%);
+}
