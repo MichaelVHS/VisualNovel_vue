@@ -16,6 +16,7 @@
     right: 0;
     bottom: 0;
   }
+
   .novel{
     display: flex;
     background-color: darkolivegreen;
@@ -24,9 +25,11 @@
     justify-content: flex-end;
     align-items: flex-end;
   }
+
   .game_text{
     margin: 20px;
     font-size: 25px;
     color: white;
   }
+
 </style>

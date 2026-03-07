@@ -1,6 +1,6 @@
 <template>
     <aside class="content">
-      <img src="" alt="logo" class="logo">
+      <img src="/logo.jpg" alt="logo" class="logo" draggable="false">
       <nav class="main_text">
         <RouterLink to="/game" >Играть</RouterLink>
         <RouterLink to="/saves">Сохранения</RouterLink>
@@ -8,6 +8,7 @@
       </nav>
     </aside>
 </template>
+
 <style scoped>
 .content{
   position: absolute;
@@ -19,6 +20,7 @@
   background: url(/stick.png) no-repeat left top;
   background-size: auto 100%;
 }
+
 .main_text{
   display: flex;
   flex-direction: column;
@@ -26,6 +28,7 @@
   align-items: center;
   width: 100%;
 }
+
 .main_text a{
   font-size: 0.4rem;
   color: var(--text-color);
@@ -33,17 +36,18 @@
   -webkit-text-stroke: 0.05rem var(--stroke-color);
   paint-order: stroke fill;
 }
+
 .main_text a:hover{
   color: var(--hover-color);
 }
+
 .logo{
   top:0;
   right:0;
   position: absolute;
-  width: 1.5rem;
-  height: 0.8rem;
-  margin: 0.4rem 0.6rem 0 0;
+  width: 1rem;
+  height: 0.9rem;
+  margin: 0.4rem 0.8rem 0 0;
+  border-radius: 0.1rem;
 }
 </style>
-<script setup lang="ts">
-</script>
