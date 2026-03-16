@@ -1,10 +1,15 @@
 <template>
 <div class="page">
   <div class="novel">
+    <GamePageVnPlayer />
     <RouterLink to="/" class="game_text">Назад</RouterLink>
   </div>
 </div>
 </template>
+
+<script setup>
+import GamePageVnPlayer from '../components/GamePageVNPlayer.vue'
+</script>
 
 <style scoped>
   .page{
@@ -27,8 +32,10 @@
   }
 
   .game_text{
+    top: 0;
+    position: absolute;
     margin: 20px;
-    font-size: 25px;
+    font-size: 40px;
     color: white;
   }
 

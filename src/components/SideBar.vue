@@ -1,6 +1,6 @@
 <template>
     <aside class="content">
-      <img src="/logo.jpg" alt="logo" class="logo" draggable="false">
+      <img src="/logo.jpg" alt="logo" class="logo">
       <nav class="main_text">
         <RouterLink to="/game" >Играть</RouterLink>
         <RouterLink to="/saves">Сохранения</RouterLink>

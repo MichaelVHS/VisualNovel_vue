@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <img src="/characters.png" alt="characters" class="characterImg" draggable="false">
+    <img src="/characters.png" alt="characters" class="characterImg" >
   <SideBar/>
   </div>
 </template>
