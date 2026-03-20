@@ -1,26 +1,20 @@
 <template>
   <div class="game-player" @click="handleClick">
-    <!-- Фон -->
     <div class="bg" :style="{ backgroundImage: bgStyle }"></div>
 
-    <!-- Спрайт персонажа (по центру) -->
     <div
         v-if="currentScene?.character?.trim()"
         class="character-sprite"
         :style="{ backgroundImage: `url(/assets/characters/${currentScene.character})` }"
     ></div>
 
-    <!-- Текст + имя -->
     <div v-if="currentScene?.text" class="text-box">
-      <!-- Имя персонажа -->
       <div v-if="currentScene.characterName?.trim()" class="character-name">
         {{ currentScene.characterName }}
       </div>
-      <!-- Текст диалога -->
       <div class="dialogue-text">{{ currentScene.text }}</div>
     </div>
 
-    <!-- Выборы -->
     <div v-if="currentScene?.type === 'choice' && currentScene.choices?.length" class="choices">
       <button
           v-for="(choice, idx) in currentScene.choices"
@@ -34,22 +28,25 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { storyData } from '../../public/assets/novel.game.ts'
+import type { Scene, Choice } from '../../public/assets/novel.game.ts'
 
-const scenes = ref({})
-const currentSceneId = ref(null)
-const rootSceneId = ref(null)
+const scenes = ref<Record<string, Scene>>(storyData.scenes)
+const currentSceneId = ref<string | null>(storyData.rootSceneId)
 
-const currentScene = computed(() => scenes.value[currentSceneId.value])
+const currentScene = computed<Scene | undefined>(() =>
+    scenes.value[currentSceneId.value ?? '']
+)
 
-const bgStyle = computed(() =>
+const bgStyle = computed<string>(() =>
     currentScene.value?.background
         ? `url(/assets/backgrounds/${currentScene.value.background})`
         : 'none'
 )
 
-function goToScene(sceneId) {
+function goToScene(sceneId: string) {
   if (!sceneId || !scenes.value[sceneId]) {
     console.error('Сцена не найдена:', sceneId)
     return
@@ -65,30 +62,16 @@ function handleClick() {
   }
 }
 
-function selectChoice(choice) {
+function selectChoice(choice: Choice) {
   if (choice.nextSceneId) {
     goToScene(choice.nextSceneId)
   }
 }
 
-async function loadGameJson() {
-  try {
-    const response = await fetch('/assets/novel.game.json')
-    const data = await response.json()
-    scenes.value = data.scenes || {}
-    rootSceneId.value = data.rootSceneId
-    if (rootSceneId.value) {
-      goToScene(rootSceneId.value)
-    } else {
-      console.error('Начальная сцена не указана в JSON')
-    }
-  } catch (err) {
-    console.error('Не удалось загрузить novel.game.json:', err)
-  }
-}
-
 onMounted(() => {
-  loadGameJson()
+  if (storyData.rootSceneId) {
+    goToScene(storyData.rootSceneId)
+  }
 })
 </script>
 
@@ -101,7 +84,6 @@ onMounted(() => {
   cursor: pointer;
   background: #000;
 }
-
 .bg {
   position: absolute;
   top: 0;
@@ -111,7 +93,6 @@ onMounted(() => {
   background-size: cover;
   background-position: center;
 }
-
 .character-sprite {
   position: absolute;
   bottom: 180px;
@@ -123,7 +104,6 @@ onMounted(() => {
   background-repeat: no-repeat;
   background-position: bottom center;
 }
-
 .text-box {
   position: absolute;
   bottom: 20px;
@@ -138,7 +118,6 @@ onMounted(() => {
   flex-direction: column;
   gap: 6px;
 }
-
 .character-name {
   align-self: flex-start;
   background: #4a62a3;
@@ -148,7 +127,6 @@ onMounted(() => {
   font-weight: 600;
   font-size: 24px;
 }
-
 .dialogue-text {
   font-size: 36px;
   line-height: 1.4;
@@ -156,7 +134,6 @@ onMounted(() => {
   word-wrap: break-word;
   pointer-events: none;
 }
-
 .choices {
   position: absolute;
   bottom: 20px;
@@ -165,8 +142,8 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  z-index: 10;
 }
-
 .choice-btn {
   padding: 12px;
   background: #4CAF50;
@@ -178,7 +155,6 @@ onMounted(() => {
   transition: background 0.2s;
   text-align: left;
 }
-
 .choice-btn:hover {
   background: #45a049;
 }
