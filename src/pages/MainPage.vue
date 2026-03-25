@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <img src="/characters.png" alt="characters" class="characterImg" >
+    <img src="/images/characters.png" alt="characters" class="characterImg" >
   <SideBar/>
   </div>
 </template>
@@ -17,7 +17,7 @@ import SideBar from "../components/SideBar.vue";
   height: 100%;
   display: flex;
   background-size: cover !important;
-  background: url(/background.jpg) no-repeat 0 0;
+  background: url(/images/background.jpg) no-repeat 0 0;
 }
 
 .characterImg{

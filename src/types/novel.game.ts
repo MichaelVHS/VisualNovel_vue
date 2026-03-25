@@ -1,9 +1,9 @@
-export interface Choice {
+export interface IChoice {
     text: string;
     nextSceneId: string;
 }
 
-export interface Scene {
+export interface IScene {
     id: string;
     type: 'normal' | 'choice' | 'ending';
     background: string;
@@ -13,15 +13,15 @@ export interface Scene {
     music: string;
     sfx: string;
     nextSceneId?: string;
-    choices?: Choice[];
+    choices?: IChoice[];
 }
 
-export interface StoryData {
+export interface IStoryData {
     rootSceneId: string;
-    scenes: Record<string, Scene>;
+    scenes: Record<string, IScene>;
 }
 
-export const storyData: StoryData = {
+export const storyData: IStoryData = {
     "rootSceneId": "scene_3",
     "scenes": {
     "scene_3": {

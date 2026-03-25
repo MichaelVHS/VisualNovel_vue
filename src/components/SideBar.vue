@@ -1,6 +1,6 @@
 <template>
     <aside class="content">
-      <img src="/logo.jpg" alt="logo" class="logo">
+      <img src="/images/logo.jpg" alt="logo" class="logo">
       <nav class="main_text">
         <RouterLink to="/game" >Играть</RouterLink>
         <RouterLink to="/saves">Сохранения</RouterLink>
@@ -17,7 +17,7 @@
   height: 100dvh;
   right: 0;
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-  background: url(/stick.png) no-repeat left top;
+  background: url(/images/stick.png) no-repeat left top;
   background-size: auto 100%;
 }
 

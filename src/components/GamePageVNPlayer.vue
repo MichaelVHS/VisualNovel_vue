@@ -1,5 +1,14 @@
 <template>
   <div class="game-player" @click="handleClick">
+    <button
+        v-if="canGoBack"
+        @click.stop="goBack"
+        class="back-btn"
+        title="Назад"
+    >
+      ← Назад
+    </button>
+
     <div class="bg" :style="{ backgroundImage: bgStyle }"></div>
 
     <div
@@ -30,15 +39,19 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { storyData } from '../../public/assets/novel.game.ts'
-import type { Scene, Choice } from '../../public/assets/novel.game.ts'
+import { storyData } from '../types/novel.game.ts'
+import type { IScene, IChoice } from '../types/novel.game.ts'
 
-const scenes = ref<Record<string, Scene>>(storyData.scenes)
+const scenes = ref<Record<string, IScene>>(storyData.scenes)
 const currentSceneId = ref<string | null>(storyData.rootSceneId)
 
-const currentScene = computed<Scene | undefined>(() =>
+const history = ref<string[]>([])
+
+const currentScene = computed<IScene | undefined>(() =>
     scenes.value[currentSceneId.value ?? '']
 )
+
+const canGoBack = computed(() => history.value.length > 0)
 
 const bgStyle = computed<string>(() =>
     currentScene.value?.background
@@ -51,18 +64,33 @@ function goToScene(sceneId: string) {
     console.error('Сцена не найдена:', sceneId)
     return
   }
+
+  if (currentSceneId.value) {
+    history.value.push(currentSceneId.value)
+  }
+
   currentSceneId.value = sceneId
+}
+
+function goBack() {
+  if (history.value.length > 0) {
+    const prevSceneId = history.value.pop()
+    if (prevSceneId) {
+      currentSceneId.value = prevSceneId
+    }
+  }
 }
 
 function handleClick() {
   if (!currentScene.value) return
   if (currentScene.value.type === 'choice') return
+
   if (currentScene.value.type === 'normal' && currentScene.value.nextSceneId) {
     goToScene(currentScene.value.nextSceneId)
   }
 }
 
-function selectChoice(choice: Choice) {
+function selectChoice(choice: IChoice) {
   if (choice.nextSceneId) {
     goToScene(choice.nextSceneId)
   }
@@ -70,7 +98,8 @@ function selectChoice(choice: Choice) {
 
 onMounted(() => {
   if (storyData.rootSceneId) {
-    goToScene(storyData.rootSceneId)
+    currentSceneId.value = storyData.rootSceneId
+    history.value = []
   }
 })
 </script>
@@ -80,19 +109,36 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
   background: #000;
+  cursor: pointer;
 }
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: white;
+}
+
 .bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-size: cover;
   background-position: center;
 }
+
 .character-sprite {
   position: absolute;
   bottom: 180px;
@@ -104,12 +150,13 @@ onMounted(() => {
   background-repeat: no-repeat;
   background-position: bottom center;
 }
+
 .text-box {
   position: absolute;
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: #0E0E0EB2;
+  background: #0e0e0eb2;
   color: white;
   padding: 12px 16px;
   border-radius: 6px;
@@ -118,6 +165,7 @@ onMounted(() => {
   flex-direction: column;
   gap: 6px;
 }
+
 .character-name {
   align-self: flex-start;
   background: #4a62a3;
@@ -127,13 +175,14 @@ onMounted(() => {
   font-weight: 600;
   font-size: 24px;
 }
+
 .dialogue-text {
   font-size: 36px;
   line-height: 1.4;
   white-space: pre-wrap;
-  word-wrap: break-word;
   pointer-events: none;
 }
+
 .choices {
   position: absolute;
   bottom: 20px;
@@ -144,17 +193,18 @@ onMounted(() => {
   gap: 8px;
   z-index: 10;
 }
+
 .choice-btn {
   padding: 12px;
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 24px;
-  transition: background 0.2s;
   text-align: left;
 }
+
 .choice-btn:hover {
   background: #45a049;
 }
