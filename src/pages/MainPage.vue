@@ -16,8 +16,10 @@ import SideBar from "../components/SideBar.vue";
   max-width: 1440px;
   height: 100%;
   display: flex;
-  background-size: cover !important;
-  background: url(/images/background.jpg) no-repeat 0 0;
+  background-image: url(/images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
 }
 
 .characterImg{

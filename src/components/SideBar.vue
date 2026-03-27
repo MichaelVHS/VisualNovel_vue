@@ -31,7 +31,7 @@
 
 .main_text a{
   font-size: 0.4rem;
-  color: var(--text-color);
+  color: var(--menu-text-color);
   text-decoration: none;
   -webkit-text-stroke: 0.05rem var(--stroke-color);
   paint-order: stroke fill;
