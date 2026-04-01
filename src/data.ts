@@ -7,7 +7,6 @@ export const storyData: IStoryData = {
             id: "scene_3",
             type: "normal",
             background: "class.jpg",
-            characterName: "ГГ",
             text: "Этот день ни чем не отличался от обычных моих дней. Надоедливые объяснения профессоров, нудные лекции, обычные серые дни. Всё как обычно. ",
             nextSceneId: "scene_4"
         },
@@ -32,7 +31,7 @@ export const storyData: IStoryData = {
             id: "scene_5",
             type: "normal",
             background: "class.jpg",
-            characterName: "ГГ",
+            characterName: "Такуя Андо",
             text: "— Учитель, можно в другой день? У меня так живот болит.",
             nextSceneId: "scene_7"
         },
@@ -40,6 +39,7 @@ export const storyData: IStoryData = {
             id: "scene_6",
             type: "normal",
             background: "class.jpg",
+            characterName: "Такуя Андо",
             text: "— Конечно, учитель.",
             nextSceneId: "scene_8"
         },
@@ -55,8 +55,8 @@ export const storyData: IStoryData = {
             id: "scene_8",
             type: "normal",
             background: "class.jpg",
-            characterName: "ГГ",
-            text: "Я бы хотел пойти домой. Сегодня мамы с отцом не было дома и это была отличная возможность провести время одному, пока они снова кого-то разводят своим экзорцизмом.",
+            characterName: "Такуя Андо",
+            text: "— Я бы хотел пойти домой. Сегодня мамы с отцом не было дома и это была отличная возможность провести время одному, пока они снова кого-то разводят своим экзорцизмом.",
             nextSceneId: "scene_9"
         },
         scene_9: {
@@ -79,7 +79,8 @@ export const storyData: IStoryData = {
         scene_11: {
             id: "scene_11",
             type: "normal",
-            background: "class.jpg",
+            background: "class.jpg", 
+            characterName: "Такуя Андо",
             text: "— Давай просто поскорее с этим покончим.",
             nextSceneId: "scene_12"
         },
@@ -122,7 +123,7 @@ export const storyData: IStoryData = {
             type: "normal",
             background: "class.jpg",
             text: "Девушка кажется поникла, но убираться продолжила молча. Я почувствовал укол вины. Но мне не хотелось ещё и в школе слушать про демонов, духов и всякие риуталы. Такого хватало дома.",
-            nextSceneId: "scene_22"
+            nextSceneId: "scene_21"
         },
         scene_16: {
             id: "scene_16",
@@ -144,6 +145,7 @@ export const storyData: IStoryData = {
             id: "scene_18",
             type: "normal",
             background: "class.jpg",
+            characterName: "Такуя Андо",
             text: "— Это разве не опасно?",
             nextSceneId: "scene_19"
         },
@@ -266,7 +268,7 @@ export const storyData: IStoryData = {
         scene_32: {
             id: "scene_32",
             type: "normal",
-            text: "Очнулся я в темноте. Надо мной горела лампочка и от её света у меня загудела голова и затошнило. Я попытался сделать глубокий вдох. Запах какой-то сырости и затухлости ударил мне в нос. ",
+            text: "Очнулся я в странном месте. Надо мной, в тёмном помещение, мигала лампочка. От её света у меня загудела голова и затошнило. Я попытался сделать глубокий вдох. Запах какой-то сырости и затухлости ударил мне в нос. ",
             nextSceneId: "scene_33"
         },
         scene_33: {
