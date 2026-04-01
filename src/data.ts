@@ -13,7 +13,6 @@ export const storyData: IStoryData = {
         scene_4: {
             id: "scene_4",
             type: "normal",
-            character: "unnamed (1).webp",
             characterName: "Учитель",
             text: "— Такуя, ты и Куродо Мичи сегодня остаётесь убирать кабинет.",
             nextSceneId: "choice_1"
@@ -57,7 +56,7 @@ export const storyData: IStoryData = {
         scene_9: {
             id: "scene_9",
             type: "normal",
-            character: "unnamed (1).webp",
+            character: "Michi_dc",
             characterName: "Куродо Мичи",
             text: "— Да мы быстро управимся, не переживай!",
             nextSceneId: "scene_10"
@@ -65,6 +64,7 @@ export const storyData: IStoryData = {
         scene_10: {
             id: "scene_10",
             type: "normal",
+            character: "Michi_happy",
             text: "Она мне улыбнулась, по-доброму и мило. Думаю, она хотела произвести на меня дружелюбный вид. Я ничего не почувствовал от этой улыбки и направился в глубь класса.",
             nextSceneId: "scene_11"
         },
@@ -83,7 +83,8 @@ export const storyData: IStoryData = {
         scene_13: {
             id: "scene_13",
             type: "normal",
-            character: "unnamed (1).webp",
+            background: "hall.png",
+            character: "Michi_dc.png",
             characterName: "Куродо Мичи",
             text: "— Такуя, а ты веришь в сверхестественное?",
             nextSceneId: "choice_2"
@@ -113,7 +114,7 @@ export const storyData: IStoryData = {
         scene_16: {
             id: "scene_16",
             type: "normal",
-            character: "unnamed (1).webp",
+            character: "Michi_happy",
             characterName: "Куродо Мичи",
             text: "— Я недавно призвала духа, представляешь??",
             nextSceneId: "scene_17"
@@ -133,7 +134,7 @@ export const storyData: IStoryData = {
         scene_19: {
             id: "scene_19",
             type: "normal",
-            character: "unnamed (1).webp",
+            character: "Michi_dc",
             characterName: "Куродо Мичи",
             text: "— Нет! Этот дух довольно милый!",
             nextSceneId: "scene_20"

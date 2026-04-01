@@ -87,6 +87,7 @@ function advanceScene() {
 function selectChoice(choice: IChoice) {
   if (choice.nextSceneId) goToScene(choice.nextSceneId)
 }
+
 </script>
 
 <style scoped>
@@ -107,7 +108,7 @@ function selectChoice(choice: IChoice) {
 
 .character-sprite {
   position: absolute;
-  bottom: 180px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   width: 400px;
@@ -126,6 +127,7 @@ function selectChoice(choice: IChoice) {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  background-color: var(--text-box-bg);
 }
 
 .character-name {
