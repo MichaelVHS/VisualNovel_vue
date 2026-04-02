@@ -55,8 +55,7 @@ export const storyData: IStoryData = {
             id: "scene_8",
             type: "normal",
             background: "class.jpg",
-            characterName: "Такуя Андо",
-            text: "— Я бы хотел пойти домой. Сегодня мамы с отцом не было дома и это была отличная возможность провести время одному, пока они снова кого-то разводят своим экзорцизмом.",
+            text: "Я бы хотел пойти домой. Сегодня мамы с отцом не было дома и это была отличная возможность провести время одному, пока они снова кого-то разводят своим экзорцизмом.",
             nextSceneId: "scene_9"
         },
         scene_9: {
@@ -172,14 +171,14 @@ export const storyData: IStoryData = {
             character: "Michi_dc.png",
             characterName: "Куродо Мичи",
             text: "— Баю-бай, не плачь, гордыня, \nСпи, утроба пустоты.",
-            nextSceneId: "scene_24"
+            nextSceneId: "scene_22"
         },
         scene_22: {
             id: "scene_22",
             type: "normal",
             background: "class.jpg",
-            text: "Всё же это была очень странная колыбельная... Свет начал моргать, а алый закат за окнами начал пугать.",
-            nextSceneId: "scene_21"
+            text: "Свет начал моргать, а алый закат за окнами начал пугать.",
+            nextSceneId: "scene_24"
         },
         scene_23: {
             id: "scene_23",
