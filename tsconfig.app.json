@@ -9,9 +9,8 @@
     "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,

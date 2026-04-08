@@ -4,7 +4,7 @@
         v-if="canGoBack"
         @click.stop="goBack"
         variant="back"
-    />
+    >←</GameButton>
 
     <div class="bg" :style="bgStyle"></div>
 
@@ -35,60 +35,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import GameButton from '@/components/GamePageVNPlayerButtons.vue'
-import { storyData } from '@/data.ts'
-import type { IChoice } from '@/types/novel.game.ts'
+import { storyData } from '@/data'
+import { useVisualNovel } from '@/composables/useVisualNovel'
 
-const scenes = storyData.scenes
-
-const gameState = ref({
-  currentSceneId: storyData.rootSceneId,
-  history: [] as string[]
-})
-
-const currentScene = computed(() => scenes[gameState.value.currentSceneId])
-const canGoBack = computed(() => gameState.value.history.length > 0)
-
-const bgStyle = computed(() => {
-  const bg = currentScene.value?.background
-  return bg
-      ? { backgroundImage: `url(/assets/backgrounds/${bg})` }
-      : { backgroundImage: 'none' }
-})
-
-const characterStyle = computed(() => {
-  const char = currentScene.value?.character
-  return char
-      ? { backgroundImage: `url(/assets/characters/${char})` }
-      : {}
-})
-
-function goToScene(sceneId: string) {
-  if (gameState.value.currentSceneId !== sceneId) {
-    gameState.value.history.push(gameState.value.currentSceneId)
-    gameState.value.currentSceneId = sceneId
-  }
-}
-
-function goBack() {
-  const previous = gameState.value.history.pop()
-  if (previous) {
-    gameState.value.currentSceneId = previous
-  }
-}
-
-function advanceScene() {
-  if (currentScene.value?.type === 'normal' && currentScene.value.nextSceneId) {
-    goToScene(currentScene.value.nextSceneId)
-  }
-}
-
-function selectChoice(choice: IChoice) {
-  if (choice.nextSceneId) goToScene(choice.nextSceneId)
-}
-
+const {
+  currentScene,
+  canGoBack,
+  bgStyle,
+  characterStyle,
+  advanceScene,
+  goBack,
+  selectChoice
+} = useVisualNovel(storyData)
 </script>
+
 
 <style scoped>
 .game-player {

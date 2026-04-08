@@ -1,6 +1,6 @@
 <template>
   <button class="btn" :class="`btn--${props.variant}`">
-    <slot>←</slot>
+    <slot></slot>
   </button>
 </template>
 
