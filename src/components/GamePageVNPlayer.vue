@@ -1,8 +1,8 @@
 <template>
-  <div class="game-player" @click="advanceScene">
+  <div class="game-player" @click="goToNextScene">
     <GameButton
         v-if="canGoBack"
-        @click.stop="goBack"
+        @click.stop="goBackToScene"
         variant="back"
     >←</GameButton>
 
@@ -25,7 +25,7 @@
       <GameButton
           v-for="(choice, idx) in currentScene.choices"
           :key="idx"
-          @click.stop="selectChoice(choice)"
+          @click.stop="makeChoiceToGoToScene(choice)"
           variant="choice"
       >
         {{ choice.text }}
@@ -44,9 +44,9 @@ const {
   canGoBack,
   bgStyle,
   characterStyle,
-  advanceScene,
-  goBack,
-  selectChoice
+  goToNextScene,
+  goBackToScene,
+  makeChoiceToGoToScene
 } = useVisualNovel(storyData)
 </script>
 

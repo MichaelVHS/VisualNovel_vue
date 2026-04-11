@@ -13,7 +13,7 @@ export interface IScene {
     characterName?: string;
     text?: string;
     music?: string;
-    sfx?: string;
+    soundEffects?: string;
     nextSceneId?: string;
     choices?: IChoice[];
 }

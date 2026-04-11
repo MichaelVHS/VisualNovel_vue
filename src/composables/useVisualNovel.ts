@@ -34,20 +34,20 @@ export function useVisualNovel(storyData: IStoryData) {
     }
   }
 
-  function goBack() {
+  function goBackToScene() {
     const previous = gameState.value.history.pop()
     if (previous) {
       gameState.value.currentSceneId = previous
     }
   }
 
-  function advanceScene() {
+  function goToNextScene() {
     if (currentScene.value?.type === 'normal' && currentScene.value.nextSceneId) {
       goToScene(currentScene.value.nextSceneId)
     }
   }
 
-  function selectChoice(choice: IChoice) {
+  function makeChoiceToGoToScene(choice: IChoice) {
     if (choice.nextSceneId) {
       goToScene(choice.nextSceneId)
     }
@@ -58,8 +58,8 @@ export function useVisualNovel(storyData: IStoryData) {
     canGoBack,
     bgStyle,
     characterStyle,
-    advanceScene,
-    goBack,
-    selectChoice
+    goToNextScene,
+    goBackToScene,
+    makeChoiceToGoToScene
   }
 }
